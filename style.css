@@ -14,10 +14,16 @@ html, body {
     display: flex;
     justify-content: center;
     padding: 20px;
-    background-color: rgba(100, 148, 237, 0.534);
+    background-color: rgba(0, 0, 0, 0.452);
+}
+.display-text-area {
+    width: 100%;
+    background-color: #efefef;
+    padding: 20px;
 }
 .display-text {
-    color: white;
+    text-align: right;
+    color: black;
     font-size: 50px;
     font-family: monospace;
 }
@@ -62,6 +68,7 @@ button {
 .equal {
     flex-grow: 1;
     margin: 0 5px 5px 10px;
+    background-color: #6494ed;
 }
 footer {
     display: flex;
