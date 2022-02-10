@@ -17,17 +17,16 @@ function clear() {
     displayText.innerHTML = '';
 }
 
-const equate = function() {
-    secondNum = +displayText.innerHTML;
-    clear();
-    displayText.innerHTML = +operate(operation, firstNum, secondNum);
-    firstNum = +displayText.innerHTML;
-    secondNum = '';
-};
+function clearMemory() {
+    memoryText.innerHTML = '';
+}
+
+
 
 const operatorSigns = ['+', '-', 'x', '÷'];
 
 const displayText = document.querySelector("div.display-text");
+const memoryText = document.querySelector("div.memory-text");
 const numberButton = document.querySelectorAll("button.numbers");
 const operatorButton = document.querySelectorAll("button.operator");
 const equalButton = document.querySelector("button.equal");
@@ -37,19 +36,16 @@ let secondNum = '';
 let operation = '';
 
 equalButton.addEventListener("click", function (){
-    equate();
+    secondNum = +displayText.innerHTML;
+    clear();
+    clearMemory();
+    displayText.innerHTML = operate(operation, firstNum, secondNum);
+    firstNum = +displayText.innerHTML;
+    secondNum = '';
 })
 
 for (let i = 0; i < numberButton.length; i++) {
     numberButton[i].addEventListener("click", function () {
-        if (displayText.innerHTML.includes('+') || displayText.innerHTML.includes('-') 
-        || displayText.innerHTML.includes('x') || displayText.innerHTML.includes('÷')) {
-            clear();
-        }
-        if (secondNum != undefined) {
-            secondNum = +displayText.innerHTML;
-            clear();
-        }
 
         if (displayText.innerHTML.length < 15) {
             displayText.innerHTML += this.innerHTML;
@@ -65,19 +61,11 @@ for (let i = 0; i < operatorButton.length; i++) {
         else if (firstNum != '' && secondNum == ''){
             secondNum = +displayText.innerHTML;
         }
+        memoryText.innerHTML = `${firstNum} ${operation}`;
         
+        memoryText.innerHTML += this.innerHTML;
 
-        clear();
-        displayText.innerHTML = this.innerHTML;
-
-        if (firstNum != '' && secondNum != '' && operation != undefined) {
-            firstNum = +operate(operation, firstNum, secondNum);
-            clear();
-            displayText.innerHTML = firstNum;
-            secondNum = '';
-        }
-
-        switch (displayText.innerHTML) {
+        switch (this.innerHTML) {
             case '+':
                 operation = 'add';
                 break;
@@ -94,6 +82,8 @@ for (let i = 0; i < operatorButton.length; i++) {
             default:
                 break;
         }
+
+        clear();
     })
 }
 
