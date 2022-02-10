@@ -11,7 +11,7 @@ html, body {
     align-items: center;
 }
 .calculator-area {
-    background-color: rgba(0, 0, 0, 0.452);
+    background: rgb(44, 45, 46);
     border-radius: 20px;
     box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
 }
@@ -57,6 +57,9 @@ button {
     height: 100px;
     width: 100px;
 }
+.numbers:hover {
+    background-color: #b1afaf;
+}
 
 .operators {
     display: flex;
@@ -64,14 +67,17 @@ button {
     align-items: center;
 }
 
+
 .operator {
-    background: indianred;
+    background-color: indianred;
     color: white;
     height: 100px;
     width: 100px;
     margin: 0 5px 5px 5px;
 }
-
+.operator:hover {
+    background-color: rgb(160, 70, 70);
+}
 .fourth-row {
     display: flex;
 }
@@ -81,4 +87,7 @@ button {
     margin: 0 5px 5px 10px;
     background-color: #6494ed;
     color: white;
+}
+.equal:hover {
+    background-color: #5076bd;
 }
