@@ -13,6 +13,7 @@ html, body {
 .calculator-area {
     background-color: rgba(0, 0, 0, 0.452);
     border-radius: 20px;
+    box-shadow: 3.9px 7.8px 7.8px hsl(0deg 0% 0% / 0.38);
 }
 .display-area {
     display: flex;

@@ -57,14 +57,10 @@ for (let i = 0; i < operatorButton.length; i++) {
     operatorButton[i].addEventListener("click", function () {
         if (firstNum == '') {
             firstNum = +displayText.innerHTML;
-        }  
-        else if (firstNum != '' && secondNum == ''){
+        } else if (secondNum == '') {
             secondNum = +displayText.innerHTML;
         }
-        memoryText.innerHTML = `${firstNum} ${operation}`;
         
-        memoryText.innerHTML += this.innerHTML;
-
         switch (this.innerHTML) {
             case '+':
                 operation = 'add';
@@ -82,6 +78,12 @@ for (let i = 0; i < operatorButton.length; i++) {
             default:
                 break;
         }
+        if (firstNum != undefined && secondNum != undefined){
+            displayText.innerHTML = operate(operation, firstNum, secondNum);
+            firstNum = +displayText.innerHTML;
+            secondNum = '';
+        }
+        memoryText.innerHTML = `${firstNum} ${this.innerHTML}`;
 
         clear();
     })
