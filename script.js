@@ -60,7 +60,11 @@ for (let i = 0; i < operatorButton.length; i++) {
         } else if (secondNum == '') {
             secondNum = +displayText.innerHTML;
         }
-        
+        if (firstNum != '' && secondNum != ''){
+            displayText.innerHTML = operate(operation, firstNum, secondNum);
+            firstNum = +displayText.innerHTML;
+            secondNum = '';
+        } 
         switch (this.innerHTML) {
             case '+':
                 operation = 'add';
@@ -78,14 +82,9 @@ for (let i = 0; i < operatorButton.length; i++) {
             default:
                 break;
         }
-        if (firstNum != undefined && secondNum != undefined){
-            displayText.innerHTML = operate(operation, firstNum, secondNum);
-            firstNum = +displayText.innerHTML;
-            secondNum = '';
-        }
-        memoryText.innerHTML = `${firstNum} ${this.innerHTML}`;
 
         clear();
+        memoryText.innerHTML = `${firstNum} ${this.innerHTML}`;
     })
 }
 
